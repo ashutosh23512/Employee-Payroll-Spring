@@ -49,7 +49,7 @@ public class Controller {
 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/update/{empId}")
 	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,@RequestBody EmployeePayrollDTO empPayrollDTO) {
 		EmployeePayrollData empData=null;
 		empData =employeePayrollService.updateEmployeePayrollData(empId,empPayrollDTO);
@@ -58,7 +58,7 @@ public class Controller {
 	}
 
 	
-	@DeleteMapping
+	@DeleteMapping("/delete/{empId}")
 	public ResponseEntity<ResponseDTO> deleteEmployeePayrollData(@PathVariable("empId") int empId) {
 		employeePayrollService.deleteEmployeePayrollData(empId);
 		ResponseDTO respDTO = new ResponseDTO("Deleted Successfully", "Deleted Id " + empId);
